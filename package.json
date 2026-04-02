@@ -1,0 +1,27 @@
+{
+  "name": "markdone",
+  "version": "1.0.0",
+  "description": "AI-powered todo app with agents",
+  "type": "module",
+  "bin": {
+    "markdone": "./run.js"
+  },
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "dev": "tsx src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:43363/git/GustavoRSSilva/markdone"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.90",
+    "@types/node": "^25.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}

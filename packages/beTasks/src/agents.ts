@@ -52,7 +52,7 @@ Return the subtasks as a numbered list, one per line. No preamble.`,
   },
 };
 
-export async function orchestrate(todoId: string, title: string): Promise<{
+export async function orchestrate(markDoneId: string, title: string): Promise<{
   category: string;
   result: string;
   subtasks: string[];
@@ -61,14 +61,14 @@ export async function orchestrate(todoId: string, title: string): Promise<{
   let result = "";
   const subtasks: string[] = [];
 
-  const systemPrompt = `You are a task orchestration agent for a todo app called Markdone.
+  const systemPrompt = `You are a task orchestration agent for MarkDone.
 Your job is to:
 1. Classify the task into one of: research, writing, coding, planning, general
 2. Delegate to the appropriate specialist subagent
 3. If it's a large task, also use the planner subagent to break it into subtasks
 4. Collect and synthesize the results
 
-Task ID: ${todoId}
+Item ID: ${markDoneId}
 Task: "${title}"
 
 After completing the work, end your response with:
@@ -76,7 +76,7 @@ CATEGORY: <category>
 SUBTASKS: <comma-separated list of subtasks, or "none">`;
 
   for await (const message of query({
-    prompt: `Work on this todo task: "${title}"
+    prompt: `Work on this MarkDone task: "${title}"
 
 Steps:
 1. Determine the best subagent for this task (researcher/writer/coder/planner)

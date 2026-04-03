@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <clipPath id="clip-planner">
+      <circle cx="50" cy="50" r="50"/>
+    </clipPath>
+    <linearGradient id="bg-planner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22"/>
+      <stop offset="100%" style="stop-color:#a04000"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="url(#bg-planner)"/>
+
+  <!-- Hair (neat, short) -->
+  <ellipse cx="50" cy="27" rx="20" ry="13" fill="#1a1a2e"/>
+  <rect x="30" y="27" width="40" height="10" fill="#1a1a2e"/>
+  <!-- Side part -->
+  <path d="M 36 22 Q 42 18 50 20" stroke="#2d2d44" stroke-width="3" fill="none"/>
+
+  <!-- Face -->
+  <ellipse cx="50" cy="44" rx="18" ry="20" fill="#fad7a0"/>
+
+  <!-- Ears -->
+  <ellipse cx="32" cy="44" rx="4" ry="5.5" fill="#fad7a0"/>
+  <ellipse cx="68" cy="44" rx="4" ry="5.5" fill="#fad7a0"/>
+
+  <!-- Eyes (confident, determined) -->
+  <ellipse cx="42" cy="42" rx="3.2" ry="3.5" fill="#1a1a2e"/>
+  <ellipse cx="58" cy="42" rx="3.2" ry="3.5" fill="#1a1a2e"/>
+  <circle cx="43.2" cy="40.8" r="1.1" fill="white"/>
+  <circle cx="59.2" cy="40.8" r="1.1" fill="white"/>
+
+  <!-- Confident smile -->
+  <path d="M 42 52 Q 50 60 58 52" stroke="#c0874f" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Body / blazer -->
+  <rect x="25" y="72" width="50" height="20" fill="#1a1a2e" clip-path="url(#clip-planner)"/>
+  <!-- Collar / shirt -->
+  <polygon points="50,72 44,80 50,78 56,80" fill="white"/>
+
+  <!-- Clipboard (lower right) -->
+  <rect x="60" y="65" width="16" height="20" rx="2" fill="white" opacity="0.9" clip-path="url(#clip-planner)"/>
+  <rect x="66" y="62" width="5" height="5" rx="1" fill="#aaa" clip-path="url(#clip-planner)"/>
+  <!-- Checklist lines -->
+  <line x1="63" y1="72" x2="73" y2="72" stroke="#ccc" stroke-width="1.2" clip-path="url(#clip-planner)"/>
+  <line x1="63" y1="76" x2="73" y2="76" stroke="#ccc" stroke-width="1.2" clip-path="url(#clip-planner)"/>
+  <line x1="63" y1="80" x2="70" y2="80" stroke="#ccc" stroke-width="1.2" clip-path="url(#clip-planner)"/>
+  <!-- Check marks -->
+  <polyline points="63,72 64.5,73.5 66.5,71" stroke="#27ae60" stroke-width="1.2" fill="none" clip-path="url(#clip-planner)"/>
+  <polyline points="63,76 64.5,77.5 66.5,75" stroke="#27ae60" stroke-width="1.2" fill="none" clip-path="url(#clip-planner)"/>
+</svg>

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { addTodo, listTodos, getTodo, updateTodo } from "./store.js";
+import { addMarkDoneItem, listMarkDoneItems, getMarkDoneItem, updateMarkDoneItem } from "./store.js";
 import { orchestrate } from "./agents.js";
-import type { Todo } from "./types.js";
+import type { MarkDoneItem } from "./types.js";
 
-function formatStatus(status: Todo["status"]): string {
+function formatStatus(status: MarkDoneItem["status"]): string {
   return { pending: "⬜", "in-progress": "🔄", done: "✅" }[status];
 }
 
@@ -19,37 +19,37 @@ function formatCategory(cat?: string): string {
   return ` [${icons[cat] ?? "📌"} ${cat}]`;
 }
 
-function printTodo(todo: Todo): void {
+function printMarkDoneItem(item: MarkDoneItem): void {
   console.log(
-    `  ${formatStatus(todo.status)} ${todo.id}  ${todo.title}${formatCategory(todo.category)}`
+    `  ${formatStatus(item.status)} ${item.id}  ${item.title}${formatCategory(item.category)}`
   );
-  if (todo.subtasks?.length) {
-    todo.subtasks.forEach((s) => console.log(`       • ${s}`));
+  if (item.subtasks?.length) {
+    item.subtasks.forEach((s) => console.log(`       • ${s}`));
   }
-  if (todo.result) {
-    const preview = todo.result.slice(0, 120).replace(/\n/g, " ");
-    console.log(`       → ${preview}${todo.result.length > 120 ? "…" : ""}`);
+  if (item.result) {
+    const preview = item.result.slice(0, 120).replace(/\n/g, " ");
+    console.log(`       → ${preview}${item.result.length > 120 ? "…" : ""}`);
   }
 }
 
 async function cmdAdd(title: string): Promise<void> {
-  const todo = addTodo(title);
-  console.log(`\n✚ Added: [${todo.id}] ${todo.title}`);
+  const item = addMarkDoneItem(title);
+  console.log(`\n✚ Added: [${item.id}] ${item.title}`);
   console.log("  Running agents…\n");
 
-  updateTodo(todo.id, { status: "in-progress" });
+  updateMarkDoneItem(item.id, { status: "in-progress" });
 
-  const { category, result, subtasks } = await orchestrate(todo.id, title);
+  const { category, result, subtasks } = await orchestrate(item.id, title);
 
-  updateTodo(todo.id, {
+  updateMarkDoneItem(item.id, {
     status: "done",
-    category: category as Todo["category"],
+    category: category as MarkDoneItem["category"],
     result,
     subtasks: subtasks.length ? subtasks : undefined,
   });
 
   console.log("\n─────────────────────────────────────");
-  console.log(`✅ Done: [${todo.id}] ${title}`);
+  console.log(`✅ Done: [${item.id}] ${title}`);
   if (subtasks.length) {
     console.log("\nSubtasks:");
     subtasks.forEach((s, i) => console.log(`  ${i + 1}. ${s}`));
@@ -61,26 +61,26 @@ async function cmdAdd(title: string): Promise<void> {
 }
 
 async function cmdRun(id: string): Promise<void> {
-  const todo = getTodo(id);
-  if (!todo) {
-    console.error(`Todo not found: ${id}`);
+  const item = getMarkDoneItem(id);
+  if (!item) {
+    console.error(`MarkDone item not found: ${id}`);
     process.exit(1);
   }
 
-  console.log(`\n▶ Running agents on: [${todo.id}] ${todo.title}\n`);
-  updateTodo(todo.id, { status: "in-progress" });
+  console.log(`\n▶ Running agents on: [${item.id}] ${item.title}\n`);
+  updateMarkDoneItem(item.id, { status: "in-progress" });
 
-  const { category, result, subtasks } = await orchestrate(todo.id, todo.title);
+  const { category, result, subtasks } = await orchestrate(item.id, item.title);
 
-  updateTodo(todo.id, {
+  updateMarkDoneItem(item.id, {
     status: "done",
-    category: category as Todo["category"],
+    category: category as MarkDoneItem["category"],
     result,
     subtasks: subtasks.length ? subtasks : undefined,
   });
 
   console.log("\n─────────────────────────────────────");
-  console.log(`✅ Done: [${todo.id}] ${todo.title}`);
+  console.log(`✅ Done: [${item.id}] ${item.title}`);
   if (subtasks.length) {
     console.log("\nSubtasks:");
     subtasks.forEach((s, i) => console.log(`  ${i + 1}. ${s}`));
@@ -92,41 +92,41 @@ async function cmdRun(id: string): Promise<void> {
 }
 
 function cmdList(): void {
-  const todos = listTodos();
-  if (!todos.length) {
-    console.log("No todos yet. Run: markdone add \"<task>\"");
+  const items = listMarkDoneItems();
+  if (!items.length) {
+    console.log("No MarkDone items yet. Run: markdone add \"<task>\"");
     return;
   }
 
   const groups = {
-    "in-progress": todos.filter((t) => t.status === "in-progress"),
-    pending: todos.filter((t) => t.status === "pending"),
-    done: todos.filter((t) => t.status === "done"),
+    "in-progress": items.filter((t) => t.status === "in-progress"),
+    pending: items.filter((t) => t.status === "pending"),
+    done: items.filter((t) => t.status === "done"),
   };
 
   if (groups["in-progress"].length) {
     console.log("\nIn Progress:");
-    groups["in-progress"].forEach(printTodo);
+    groups["in-progress"].forEach(printMarkDoneItem);
   }
   if (groups.pending.length) {
     console.log("\nPending:");
-    groups.pending.forEach(printTodo);
+    groups.pending.forEach(printMarkDoneItem);
   }
   if (groups.done.length) {
     console.log("\nDone:");
-    groups.done.forEach(printTodo);
+    groups.done.forEach(printMarkDoneItem);
   }
   console.log();
 }
 
 function printHelp(): void {
   console.log(`
-Markdone — AI-powered todo app with agents
+MarkDone — AI-powered tasks with agents
 
 Usage:
   markdone add "<task>"   Add a task and run agents on it immediately
-  markdone run <id>       Re-run agents on an existing task
-  markdone list           List all todos
+  markdone run <id>       Re-run agents on an existing item
+  markdone list           List all MarkDone items
   markdone help           Show this help
 `);
 }

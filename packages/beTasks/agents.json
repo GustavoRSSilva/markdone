@@ -1,0 +1,12 @@
+{
+  "agents": [
+    {
+      "id": "f32675e0",
+      "name": "Legal Advisor",
+      "description": "Reviews contracts",
+      "systemPrompt": "You are an expert legal advisor.",
+      "createdAt": "2026-04-03T16:05:56.326Z",
+      "updatedAt": "2026-04-03T16:05:56.326Z"
+    }
+  ]
+}

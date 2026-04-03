@@ -1,7 +1,7 @@
 {
   "name": "markdone",
   "version": "1.0.0",
-  "description": "AI-powered todo app with agents",
+  "description": "MarkDone — AI-powered tasks with agents",
   "type": "module",
   "packageManager": "pnpm@10.33.0",
   "bin": {
@@ -10,10 +10,10 @@
   "scripts": {
     "start": "pnpm --filter betasks start",
     "build": "pnpm --filter betasks build",
-    "build:web": "pnpm --filter web build",
+    "build:web": "pnpm --filter fetasks build",
     "dev": "pnpm --filter betasks dev",
-    "dev:web": "pnpm --filter web dev",
-    "preview:web": "pnpm --filter web preview"
+    "dev:web": "pnpm --filter fetasks dev",
+    "preview:fetasks": "pnpm --filter fetasks preview"
   },
   "repository": {
     "type": "git",

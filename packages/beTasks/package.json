@@ -1,17 +1,29 @@
 {
   "name": "betasks",
   "version": "1.0.0",
-  "description": "Markdone backend task runner (beTasks)",
+  "description": "MarkDone backend task runner (beTasks)",
   "type": "module",
   "scripts": {
     "start": "tsx src/index.ts",
     "build": "tsc",
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "server": "tsx src/server.ts",
+    "server:dev": "tsx watch src/server.ts"
   },
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.2.90",
     "@types/node": "^25.5.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8"
   }
 }

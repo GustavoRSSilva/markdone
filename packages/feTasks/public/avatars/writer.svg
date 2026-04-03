@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <clipPath id="clip-writer">
+      <circle cx="50" cy="50" r="50"/>
+    </clipPath>
+    <linearGradient id="bg-writer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#6c3483"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="url(#bg-writer)"/>
+
+  <!-- Long hair -->
+  <ellipse cx="50" cy="27" rx="21" ry="14" fill="#8B4513"/>
+  <rect x="29" y="27" width="42" height="22" fill="#8B4513"/>
+  <ellipse cx="29" cy="48" rx="5" ry="12" fill="#8B4513"/>
+  <ellipse cx="71" cy="48" rx="5" ry="12" fill="#8B4513"/>
+
+  <!-- Face -->
+  <ellipse cx="50" cy="44" rx="18" ry="20" fill="#fad7a0"/>
+
+  <!-- Ears -->
+  <ellipse cx="32" cy="44" rx="4" ry="5.5" fill="#fad7a0"/>
+  <ellipse cx="68" cy="44" rx="4" ry="5.5" fill="#fad7a0"/>
+
+  <!-- Eyes -->
+  <ellipse cx="42" cy="42" rx="3" ry="3.5" fill="#2c3e50"/>
+  <ellipse cx="58" cy="42" rx="3" ry="3.5" fill="#2c3e50"/>
+  <!-- Eye shine -->
+  <circle cx="43.2" cy="40.8" r="1" fill="white"/>
+  <circle cx="59.2" cy="40.8" r="1" fill="white"/>
+
+  <!-- Smile -->
+  <path d="M 42 53 Q 50 60 58 53" stroke="#c0874f" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+  <!-- Lips -->
+  <path d="M 44 55 Q 50 59 56 55" stroke="#e07b50" stroke-width="1.2" fill="#e07b50" fill-opacity="0.3"/>
+
+  <!-- Body / blouse (purple) -->
+  <ellipse cx="50" cy="85" rx="24" ry="14" fill="#7d3c98" clip-path="url(#clip-writer)"/>
+  <rect x="26" y="74" width="48" height="16" fill="#7d3c98" clip-path="url(#clip-writer)"/>
+
+  <!-- Pen / quill -->
+  <line x1="62" y1="74" x2="74" y2="62" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="62,74 60,80 66,78" fill="#fff"/>
+  <line x1="74" y1="62" x2="78" y2="56" stroke="#f0c040" stroke-width="3" stroke-linecap="round"/>
+</svg>

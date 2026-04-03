@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <clipPath id="clip-coder">
+      <circle cx="50" cy="50" r="50"/>
+    </clipPath>
+    <linearGradient id="bg-coder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#1a6b3c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="url(#bg-coder)"/>
+
+  <!-- Hoodie hood -->
+  <ellipse cx="50" cy="26" rx="22" ry="15" fill="#2c3e50"/>
+  <rect x="28" y="26" width="44" height="16" fill="#2c3e50"/>
+
+  <!-- Face -->
+  <ellipse cx="50" cy="44" rx="17" ry="19" fill="#fde3c8"/>
+
+  <!-- Ears -->
+  <ellipse cx="33" cy="44" rx="4" ry="5" fill="#fde3c8"/>
+  <ellipse cx="67" cy="44" rx="4" ry="5" fill="#fde3c8"/>
+
+  <!-- Headphones -->
+  <path d="M 33 38 Q 50 20 67 38" fill="none" stroke="#555" stroke-width="3"/>
+  <rect x="28" y="36" width="9" height="11" rx="3" fill="#555"/>
+  <rect x="63" y="36" width="9" height="11" rx="3" fill="#555"/>
+
+  <!-- Eyes (focused/squinting) -->
+  <ellipse cx="42" cy="43" rx="3" ry="3" fill="#2c3e50"/>
+  <ellipse cx="58" cy="43" rx="3" ry="3" fill="#2c3e50"/>
+  <circle cx="43" cy="42" r="1" fill="white"/>
+  <circle cx="59" cy="42" r="1" fill="white"/>
+
+  <!-- Slight smirk -->
+  <path d="M 44 52 Q 51 57 57 53" stroke="#c68642" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+  <!-- Hoodie body -->
+  <rect x="26" y="72" width="48" height="20" rx="4" fill="#2c3e50" clip-path="url(#clip-coder)"/>
+  <rect x="43" y="72" width="14" height="12" rx="2" fill="#3d5166"/>
+
+  <!-- Code brackets on shirt -->
+  <text x="37" y="84" font-family="monospace" font-size="10" fill="#2ecc71" font-weight="bold">&lt;/&gt;</text>
+</svg>

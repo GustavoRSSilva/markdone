@@ -1,0 +1,72 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = "MarkDone" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="MarkDone — capture and track what you want done" />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+    --bg: #0f1419;
+    --surface: #1a2230;
+    --border: #2d3a4d;
+    --text: #e8ecf1;
+    --muted: #8b9cb3;
+    --accent: #6ca0ff;
+    --accent-dim: #4a7ae0;
+    --ok: #5ecf8a;
+    --warn: #e8c36a;
+    --font: "DM Sans", system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f7f6f3;
+      --surface: #ffffff;
+      --border: #d8dee8;
+      --text: #1a2332;
+      --muted: #5c6b7f;
+      --accent: #3b6fd9;
+      --accent-dim: #2d58b8;
+      --ok: #2a9d5c;
+      --warn: #b8860d;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+</style>

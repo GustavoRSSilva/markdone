@@ -133,6 +133,7 @@ Usage:
 
 async function main(): Promise<void> {
   const [, , cmd, ...rest] = process.argv;
+  console.log(cmd);
 
   switch (cmd) {
     case "add":

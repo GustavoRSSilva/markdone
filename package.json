@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "AI-powered todo app with agents",
   "type": "module",
+  "packageManager": "pnpm@10.33.0",
   "bin": {
-    "markdone": "./run.js"
+    "markdone": "./packages/beTasks/run.js"
   },
   "scripts": {
-    "start": "tsx src/index.ts",
-    "build": "tsc",
-    "dev": "tsx src/index.ts"
+    "start": "pnpm --filter betasks start",
+    "build": "pnpm --filter betasks build",
+    "build:web": "pnpm --filter web build",
+    "dev": "pnpm --filter betasks dev",
+    "dev:web": "pnpm --filter web dev",
+    "preview:web": "pnpm --filter web preview"
   },
   "repository": {
     "type": "git",
@@ -19,9 +23,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "^0.2.90",
-    "@types/node": "^25.5.0",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.2"
+    "betasks": "workspace:*"
   }
 }
